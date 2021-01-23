@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+    const choices = ["rock", "paper", "scissors"]
+
+
+    function computerPlay(){
+      //randomly generates number 0 1 2 corresponding to array
+      let cpuChoice = Math.floor(Math.random() * choices.length);
+      return cpuChoice;
+    }
+
+    function playerPlay () {
+
+      let doFinished = 0;
+
+      do {
+        var playerInput = prompt("'rock', 'paper', or scissors'?");
+        if (playerInput === null){
+          alert("Coward!");
+        }
+        else {
+          playerInput = playerInput.toLowerCase();
+        }
+        
+        if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
+          doFinished = 1;
+        }
+      } while (doFinished !== 1);
+
+      //converts playerInput to integer
+
+      if (playerInput === "rock"){
+          playerInput = 0;
+      }
+      else if (playerInput === "paper"){
+          playerInput = 1;
+      }
+      else if (playerInput === "scissors"){
+          playerInput = 2;
+      }
+
+      return playerInput;
+    }
+
+  
+
+    function singleRound(computerSelection, playerSelection){
+        console.log("Player Choice =",choices[playerSelection]);
+        console.log("Opponent Choice =",choices[computerSelection]);
+
+        if (playerSelection === computerSelection){
+        console.log("Tie");
+      }
+        else if ((playerSelection === 0 && computerSelection === 2) || (playerSelection === 1 && computerSelection === 0) || (playerSelection === 2 && computerSelection === 1)) {  
+        console.log("You win");
+        playerScore +=1;
+        }
+        else {  
+        console.log("You Lose");
+        computerScore += 1;
+        }
+    }
+    
+
+      function game(){
+        playerScore = 0;
+        computerScore = 0;
+        let playerSelection = playerPlay();
+        let computerSelection = computerPlay();
+
+        singleRound(computerSelection,playerSelection);
+        console.log("Player Score =", playerScore);
+        console.log("Computer Score =", computerScore);
+
+        playerSelection = playerPlay();
+        computerSelection = computerPlay();
+
+        singleRound(computerSelection,playerSelection);
+        console.log("Player Score =", playerScore);
+        console.log("Computer Score =", computerScore);
+
+        playerSelection = playerPlay();
+        computerSelection = computerPlay();
+
+        singleRound(computerSelection,playerSelection);
+        console.log("Player Score =", playerScore);
+        console.log("Computer Score =", computerScore);
+
+        playerSelection = playerPlay();
+        computerSelection = computerPlay();
+
+        singleRound(computerSelection,playerSelection);
+        console.log("Player Score =", playerScore);
+        console.log("Computer Score =", computerScore);
+
+        playerSelection = playerPlay();
+        computerSelection = computerPlay();
+
+        singleRound(computerSelection,playerSelection);
+        console.log("Player Score =", playerScore);
+        console.log("Computer Score =", computerScore);
+
+        if (playerScore > computerScore) {
+        alert("You are the champion!");
+      }
+      else if (playerScore < computerScore) {
+        alert("Lost it all! What a drag.");
+      }
+      else {
+        alert("A tie! A tie! A tie!");
+      }
+      }
+
+  
+      
+
+        let playerScore = 0;
+        let computerScore = 0;
+        game();
+
+
+  </script>
+</body>
+</html>
